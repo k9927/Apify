@@ -39,8 +39,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/client/dist/index.html",
-      "status": 200
+      "destination": "/client/dist/index.html"
     }
   ],
   "headers": [
@@ -52,6 +51,13 @@
           "value": "s-maxage=0, stale-while-revalidate=60"
         }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/old-path",
+      "destination": "/new-path",
+      "permanent": true
     }
   ]
 }

@@ -2,11 +2,12 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/client/', // Critical for Vercel
+  base: '/', // Changed from '/client/' to '/'
   plugins: [react()],
   build: {
-    outDir: '../dist', // Build outside client folder
-    emptyOutDir: true
+    outDir: 'dist', // Now builds inside client folder
+    emptyOutDir: true,
+    assetsDir: 'assets'
   },
   server: {
     proxy: {

@@ -10,7 +10,9 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "../dist",
-        "cleanDistDir": true
+        "cleanDistDir": true,
+        "installCommand": "cd client && npm install",
+        "buildCommand": "cd client && npm run build"
       }
     }
   ],
@@ -20,17 +22,36 @@
       "dest": "/server.js"
     },
     {
+      "src": "/favicon.ico",
+      "dest": "/client/dist/favicon.ico",
+      "status": 200
+    },
+    {
       "src": "/assets/(.*)",
       "dest": "/client/dist/assets/$1"
     },
     {
+      "src": "/static/(.*)",
+      "dest": "/client/dist/static/$1"
+    },
+    {
       "src": "/(.*)",
+      "headers": {
+        "Cache-Control": "s-maxage=0, stale-while-revalidate=60"
+      },
       "dest": "/client/dist/$1",
       "continue": true
     },
     {
       "src": "/(.*)",
-      "dest": "/client/dist/index.html"
+      "dest": "/client/dist/index.html",
+      "status": 200
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/client/dist/index.html"
     }
   ]
 }

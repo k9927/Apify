@@ -16,42 +16,42 @@
       }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/server.js"
+      "source": "/api/(.*)",
+      "destination": "/server.js"
     },
     {
-      "src": "/favicon.ico",
-      "dest": "/client/dist/favicon.ico",
-      "status": 200
+      "source": "/favicon.ico",
+      "destination": "/client/dist/favicon.ico"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/client/dist/assets/$1"
+      "source": "/assets/(.*)",
+      "destination": "/client/dist/assets/$1"
     },
     {
-      "src": "/static/(.*)",
-      "dest": "/client/dist/static/$1"
+      "source": "/static/(.*)",
+      "destination": "/client/dist/static/$1"
     },
     {
-      "src": "/(.*)",
-      "headers": {
-        "Cache-Control": "s-maxage=0, stale-while-revalidate=60"
-      },
-      "dest": "/client/dist/$1",
-      "continue": true
+      "source": "/(.*)",
+      "destination": "/client/dist/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/client/dist/index.html",
+      "source": "/(.*)",
+      "destination": "/client/dist/index.html",
       "status": 200
     }
   ],
-  "rewrites": [
+  "headers": [
     {
       "source": "/(.*)",
-      "destination": "/client/dist/index.html"
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "s-maxage=0, stale-while-revalidate=60"
+        }
+      ]
     }
   ]
 }

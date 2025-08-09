@@ -46,7 +46,7 @@ function App() {
   return (
     <div className="min-h-screen py-8 bg-gray-100">
       <div className="container px-4 mx-auto">
-        <h1 className="mb-8 text-3xl font-bold text-center">Apiy Integration Demo</h1>
+        <h1 className="mb-8 text-3xl font-bold text-center">Apify Integration Demo</h1>
         
         <div className="space-y-6">
           {!apiKey ? (

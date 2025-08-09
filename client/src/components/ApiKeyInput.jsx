@@ -10,7 +10,7 @@ const ApiKeyInput = ({ onAuthenticate }) => {
 
   return (
     <div className="max-w-md p-6 mx-auto bg-white rounded-lg shadow-md">
-      <h2 className="mb-4 text-xl font-semibold">Enter Your Apiy API Key</h2>
+      <h2 className="mb-4 text-xl font-semibold">Enter Your Apify API Key</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="apiKey" className="block mb-1 text-sm font-medium text-gray-700">

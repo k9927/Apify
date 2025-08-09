@@ -25,16 +25,16 @@
       "headers": {
         "Cache-Control": "public, max-age=31536000, immutable"
       },
-      "dest": "/client/dist/assets/$1"
+      "dest": "/assets/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/client/dist/$1",
+      "dest": "/$1",
       "continue": true
     },
     {
       "src": "/(.*)",
-      "dest": "/client/dist/index.html"
+      "dest": "/index.html"
     }
   ]
 }

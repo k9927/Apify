@@ -5,7 +5,7 @@ export default defineConfig({
   base: '/', // Changed from '/client/' to '/'
   plugins: [react()],
   build: {
-    outDir: '../dist', // Now builds inside client folder
+    outDir: 'dist', // Now builds inside client folder
     emptyOutDir: true,
     assetsDir: 'assets'
   },

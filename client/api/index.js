@@ -1,4 +1,4 @@
-const app = require('./acts');
+const app = require('./server');
 
 module.exports = (req, res) => {
   // Handle CORS

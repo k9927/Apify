@@ -1,21 +1,28 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/', // Changed from '/client/' to '/'
+  base: '/', 
   plugins: [react()],
-  build: {
-    outDir: 'dist', // Now builds inside client folder
-    emptyOutDir: true,
-    assetsDir: 'assets'
-  },
   server: {
     proxy: {
       '/api': {
-        target: 'https://api.apify.com',
+        target: 'http://localhost:3001',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '/v2'),
+        secure: false,
+        configure: (proxy, options) => {
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            if (req.headers.authorization) {
+              proxyReq.setHeader('Authorization', req.headers.authorization);
+            }
+          });
+        }
       }
     }
+  },
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    assetsDir: 'assets'
   }
-})
+});
